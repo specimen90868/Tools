@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".catMaterias" />
         <activity
             android:name=".catGrupos"
             android:label="@string/title_activity_cat_grupos"
@@ -36,6 +35,42 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.teamtools.teacherstool.catGrupos" />
+        </activity>
+        <activity
+            android:name=".catCriterios"
+            android:label="@string/title_activity_cat_criterios"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamtools.teacherstool.MainActivity" />
+        </activity>
+        <activity
+            android:name=".frmCriterios"
+            android:label="@string/title_activity_frm_criterios"
+            android:parentActivityName=".catCriterios"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamtools.teacherstool.catCriterios" />
+        </activity>
+        <activity
+            android:name=".catMaterias"
+            android:label="@string/title_activity_cat_materias"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamtools.teacherstool.MainActivity" />
+        </activity>
+        <activity
+            android:name=".frmMaterias"
+            android:label="@string/title_activity_frm_materias"
+            android:parentActivityName=".catMaterias"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamtools.teacherstool.catMaterias" />
         </activity>
     </application>
 

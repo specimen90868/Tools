@@ -4,6 +4,12 @@
         <item android:id="@+id/nav_grupos"
             android:icon="@drawable/ic_adjust_black_24dp"
             android:title="@string/menu_grupos" />
+        <item android:id="@+id/nav_materias"
+            android:icon="@drawable/ic_adjust_black_24dp"
+            android:title="@string/menu_materias" />
+        <item android:id="@+id/nav_criterios"
+            android:icon="@drawable/ic_adjust_black_24dp"
+            android:title="@string/menu_criterios" />
         <item android:id="@+id/nav_preferences"
             android:icon="@drawable/ic_action_settings"
             android:title="@string/menu_preferences" />

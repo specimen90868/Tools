@@ -45,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), catGrupos.class);
                     startActivity(intent);
                 }
+
+                if(id == R.id.nav_materias) {
+                    Intent intent = new Intent(getBaseContext(), catMaterias.class);
+                    startActivity(intent);
+                }
+
+                if(id== R.id.nav_criterios){
+                    Intent intent = new Intent(getBaseContext(), catCriterios.class);
+                    startActivity(intent);
+                }
+
                 if (id == R.id.nav_preferences) {
                     // Handle the preference  action
                 } else if (id == R.id.nav_about) {

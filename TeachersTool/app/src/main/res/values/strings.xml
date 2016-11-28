@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_grupos">Grupos</string>
+    <string name="menu_materias">Materias</string>
+    <string name="menu_criterios">Criterios</string>
     <string name="menu_preferences">Configuracion</string>
     <string name="menu_about">Acerca</string>
 
@@ -20,5 +22,19 @@
     <string name="subtituloFormularioNombre">Nombre:</string>
     <string name="subtituloFormularioPeriodo">No. de periodos:</string>
     <string name="tituloBotonGrupos">Guardar</string>
+
+    <string name="IdcCriterio">0</string>
+    <string name="cCriNombre">Criterio</string>
+    <string name="title_activity_cat_criterios">Criterios</string>
+    <string name="title_activity_frm_criterios">Formulario</string>
+
+    <string name="tituloFrmCriterioNvo">Nuevo Criterio</string>
+    <string name="subtituloFrmCriterioNvoNombre">Criterio:</string>
+    <string name="tituloBtnCriterioGruada">Guardar</string>
+
+    <string name="title_activity_cat_materias">Materias</string>
+    <string name="title_activity_frm_materias">Formulario</string>
+    <string name="tituloFormularioMaterias">Nueva materia</string>
+
 
 </resources>
