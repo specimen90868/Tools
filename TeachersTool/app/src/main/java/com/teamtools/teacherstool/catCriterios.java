@@ -45,10 +45,10 @@ public class catCriterios extends AppCompatActivity {
     private void initComponents(){
         this.lstvCriterios=(ListView)findViewById(R.id.lstvCriterios);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarCriterios);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab=(FloatingActionButton) findViewById(R.id.nuevoCriterios);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.nuevoCriterios);
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -150,8 +150,6 @@ public class catCriterios extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
 
@@ -168,8 +166,11 @@ public class catCriterios extends AppCompatActivity {
             case R.id.menu_item_delete_criterio:
                 Toast.makeText(catCriterios.this, "soy eliminar del menu oculto", Toast.LENGTH_LONG).show();
                 break;
+            case R.id.toolbarCriterios:
+                onBackPressed();
+                break;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
 
