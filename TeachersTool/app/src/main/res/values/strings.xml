@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Teachers Tool</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_grupos">Grupos</string>
+    <string name="menu_preferences">Configuracion</string>
+    <string name="menu_about">Acerca</string>
+
+    <string name="IdcGrupo">0</string>
+    <string name="cGrnombre">Grupo</string>
+    <string name="cGrPeriodos">0</string>
+    <string name="cGrAlumnos">0</string>
+    <string name="cGrTexto">Alumnos:</string>
+    <string name="title_activity_cat_grupos">Grupos</string>
+    <string name="title_activity_frm_grupos">Formulario</string>
+
+    <string name="tituloFormularioGrupos">Nuevo grupo</string>
+    <string name="subtituloFormularioNombre">Nombre:</string>
+    <string name="subtituloFormularioPeriodo">No. de periodos:</string>
+    <string name="tituloBotonGrupos">Guardar</string>
+
+</resources>

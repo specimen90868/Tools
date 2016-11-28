@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_grupos"
+            android:icon="@drawable/ic_adjust_black_24dp"
+            android:title="@string/menu_grupos" />
+        <item android:id="@+id/nav_preferences"
+            android:icon="@drawable/ic_action_settings"
+            android:title="@string/menu_preferences" />
+        <item android:id="@+id/nav_about"
+            android:icon="@drawable/ic_action_about"
+            android:title="@string/menu_about" />
+    </group>
+</menu>
