@@ -1,5 +1,6 @@
 package com.teamtools.teacherstool;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -72,6 +73,8 @@ public class frmGrupos extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),"Tu grupo ha sido guardado.", Toast.LENGTH_SHORT).show();
                 this.txtNombre.setText("");
                 this.txtPeriodos.setText("");
+                Intent intent = new Intent(this, catGrupos.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         }
         catch(Exception error){
