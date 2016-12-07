@@ -81,7 +81,7 @@ public class catGrupos extends AppCompatActivity {
                 TextView c = (TextView) view.findViewById(R.id.IdcGrupo);
                 String idGrupo = c.getText().toString();
 
-                Intent _intent = new Intent(getBaseContext(), frmGrupos.class);
+                Intent _intent = new Intent(getBaseContext(), catGrupoMaterias.class);
                 _intent.putExtra("clave_grupo", idGrupo);
                 startActivity(_intent);
             }

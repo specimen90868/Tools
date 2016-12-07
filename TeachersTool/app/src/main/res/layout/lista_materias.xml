@@ -12,15 +12,15 @@
         android:textColor="@color/colorPrimaryText" />
 
     <TextView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:text="F"
         android:background="@drawable/shape_inicial"
         android:textColor="@color/colorTextShape"
         android:textSize="@dimen/inicialcatalogos"
         android:textStyle="bold"
         android:gravity="center"
-        android:id="@+id/cGrInicial"
+        android:id="@+id/cMatInicial"
         android:layout_marginTop="10sp"
         android:layout_marginLeft="15sp"
         android:layout_alignParentTop="true"
@@ -30,21 +30,11 @@
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:text="@string/cGrnombre"
-        android:id="@+id/cGrNombre"
+        android:id="@+id/cMatNombre"
         android:textSize="@dimen/titlecatalogos"
         android:textColor="@color/colorPrimaryText"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="@string/cGrTexto"
-        android:id="@+id/cGrTexto"
-        android:textSize="@dimen/subtitlecatalogos"
-        android:layout_marginTop="10sp"
-        android:textColor="@color/colorPrimaryText"
-        android:layout_below="@+id/cGrNombre"
-        android:layout_alignStart="@+id/cGrNombre" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9sp"/>
 
 </RelativeLayout>

@@ -37,4 +37,15 @@
     <string name="tituloFormularioMaterias">Nueva materia</string>
 
 
+    <string name="IdRGM">0</string>
+    <string name="cGMNombre">Materia</string>
+    <string name="title_activity_cat_grupo_materias">Materias en Grupo</string>
+    <string name="title_activity_frm_grupo_materias">Materias del Gpo</string>
+
+    <string name="IdSpinner">0</string>
+    <string name="SpinnerNombre">Nombre</string>
+    <string name="tituloFormularioRGM">Asignar materia:</string>
+    <string name="tituloBotonRGM">Asignar</string>
+
+
 </resources>

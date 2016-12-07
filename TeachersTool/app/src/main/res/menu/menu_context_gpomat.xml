@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/rgmCriterio"
+        android:title="Actividad"
+        android:orderInCategory="1"/>
+
+    <item android:id="@+id/rgmBorrar"
+        android:title="Borrar"
+        android:orderInCategory="2" />
+
+    <item android:id="@+id/rgmEditar"
+        android:title="Editar"
+        android:orderInCategory="3"/>
+</menu>

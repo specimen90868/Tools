@@ -38,16 +38,15 @@ public class AdapterMaterias extends ArrayAdapter<Materias> {
         }
 
         TextView IdcMateria = (TextView)v.findViewById(R.id.IdcMateria);
-        TextView cGrNombre = (TextView)v.findViewById(R.id.cGrNombre);
-        TextView cGrTexto = (TextView)v.findViewById(R.id.cGrTexto);
-        TextView cGrInicial = (TextView)v.findViewById(R.id.cGrInicial);
+        TextView cMatNombre = (TextView)v.findViewById(R.id.cMatNombre);
+        TextView cMatInicial = (TextView)v.findViewById(R.id.cMatInicial);
 
         Materias item = getItem(position);
         IdcMateria.setText(Integer.toString(item.getIdcMat()));
         String inicial = item.getcMaNombre().substring(0,1);
-        cGrInicial.setText(inicial.toUpperCase());
-        cGrNombre.setText(item.getcMaNombre());
-        cGrTexto.setText("Alumnos: 0");
+        cMatInicial.setText(inicial.toUpperCase());
+        cMatNombre.setText(item.getcMaNombre());
+
         return v;
     }
 }

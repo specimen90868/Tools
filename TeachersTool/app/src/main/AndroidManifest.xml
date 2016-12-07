@@ -72,6 +72,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.teamtools.teacherstool.catMaterias" />
         </activity>
+        <activity
+            android:name=".catGrupoMaterias"
+            android:label="@string/title_activity_cat_grupo_materias"
+            android:parentActivityName=".catGrupos"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamtools.teacherstool.catGrupos" />
+        </activity>
+        <activity
+            android:name=".frmGrupoMaterias"
+            android:label="@string/title_activity_frm_grupo_materias"
+            android:parentActivityName=".catGrupoMaterias"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamtools.teacherstool.catGrupoMaterias" />
+        </activity>
     </application>
 
 </manifest>
