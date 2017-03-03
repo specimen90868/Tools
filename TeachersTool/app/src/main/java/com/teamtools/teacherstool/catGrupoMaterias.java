@@ -19,7 +19,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.teamtools.teacherstool.adapters.AdapterRelacionGpoMat;
+import com.teamtools.teacherstool.helpers.GruposHelper;
 import com.teamtools.teacherstool.helpers.RelacionGrupoMateriaHelper;
+import com.teamtools.teacherstool.models.Grupos;
 import com.teamtools.teacherstool.models.RelacionGrupoMaterias;
 import com.teamtools.teacherstool.models.Shared;
 
@@ -65,6 +67,53 @@ public class catGrupoMaterias extends AppCompatActivity {
         rgmh.close();
         ArrayAdapter aRGM = new AdapterRelacionGpoMat(getApplicationContext(), lstRGM);
         this.lstvRelacionGM.setAdapter(aRGM);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflate  = this.getMenuInflater();
+        inflate.inflate(R.menu.menu_context_gpomat, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo menuGrupoMateria = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        ListAdapter gpomat = lstvRelacionGM.getAdapter();
+        RelacionGrupoMaterias rgm = (RelacionGrupoMaterias)gpomat.getItem(menuGrupoMateria.position);
+        final Integer idGrupoMateria = rgm.getIdRGM();
+        Log.v("ID", idGrupoMateria.toString());
+        final Context context = this;
+        switch (item.getItemId()) {
+            case R.id.rgmBorrar:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("¿Deseas borrar la materia del grupo?");
+                builder.setTitle("Confirmación");
+                builder.setPositiveButton("Si", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        RelacionGrupoMateriaHelper rgmh = new RelacionGrupoMateriaHelper(context);
+                        RelacionGrupoMaterias grupomateria = new RelacionGrupoMaterias(idGrupoMateria,0,0,"");
+                        rgmh.open();
+                        rgmh.eliminaRelacionGM(grupomateria);
+                        rgmh.close();
+                        ListaRelacionGM();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                break;
+
+            default:
+                return super.onContextItemSelected(item);
+        }
+        return  true;
     }
 
     private ListView lstvRelacionGM;

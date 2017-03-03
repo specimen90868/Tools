@@ -131,6 +131,12 @@ public class catGrupos extends AppCompatActivity {
                 dialog.show();
                 break;
 
+            case R.id.gMaterias:
+                Intent intentMaterias = new Intent(getBaseContext(), frmGrupoMaterias.class);
+                Shared.IdShared = idGrupo;
+                startActivity(intentMaterias);
+                break;
+
             default:
                 return super.onContextItemSelected(item);
         }
