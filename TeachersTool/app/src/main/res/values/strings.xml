@@ -22,6 +22,7 @@
     <string name="subtituloFormularioNombre">Nombre:</string>
     <string name="subtituloFormularioPeriodo">No. de periodos:</string>
     <string name="tituloBotonGrupos">Guardar</string>
+    <string name="tituloBotonGrupoMateria">Asignar</string>
 
     <string name="IdcCriterio">0</string>
     <string name="cCriNombre">Criterio</string>
@@ -40,7 +41,7 @@
     <string name="IdRGM">0</string>
     <string name="cGMNombre">Materia</string>
     <string name="title_activity_cat_grupo_materias">Materias en Grupo</string>
-    <string name="title_activity_frm_grupo_materias">Materias del Gpo</string>
+    <string name="title_activity_frm_grupo_materias">Asignaciones al grupo</string>
 
     <string name="IdSpinner">0</string>
     <string name="SpinnerNombre">Nombre</string>

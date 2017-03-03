@@ -1,6 +1,5 @@
 package com.teamtools.teacherstool;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,22 +9,21 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.teamtools.teacherstool.adapters.AdapterGrupos;
 import com.teamtools.teacherstool.helpers.GruposHelper;
 import com.teamtools.teacherstool.models.Grupos;
+import com.teamtools.teacherstool.models.Shared;
 
 import java.util.ArrayList;
 
@@ -53,7 +51,7 @@ public class catGrupos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), frmGrupos.class);
-                intent.putExtra("clave_grupo", "0");
+                Shared.IdShared = 0;
                 startActivity(intent);
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
@@ -80,9 +78,8 @@ public class catGrupos extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView c = (TextView) view.findViewById(R.id.IdcGrupo);
                 String idGrupo = c.getText().toString();
-
+                Shared.IdShared = Integer.parseInt(idGrupo);
                 Intent _intent = new Intent(getBaseContext(), catGrupoMaterias.class);
-                _intent.putExtra("clave_grupo", idGrupo);
                 startActivity(_intent);
             }
         });
@@ -100,12 +97,12 @@ public class catGrupos extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo menuGrupo = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
         ListAdapter grupo = lstvGrupos.getAdapter();
         Grupos g = (Grupos)grupo.getItem(menuGrupo.position);
-        final String idGrupo = Integer.toString(g.getIdcGrupo());
+        final Integer idGrupo = g.getIdcGrupo();
         final Context context = this;
         switch (item.getItemId()) {
             case R.id.gEditar:
                 Intent _intent = new Intent(getBaseContext(), frmGrupos.class);
-                _intent.putExtra("clave_grupo", idGrupo);
+                Shared.IdShared = idGrupo;
                 startActivity(_intent);
                 break;
 
@@ -117,7 +114,7 @@ public class catGrupos extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which){
                         GruposHelper gh = new GruposHelper(context);
-                        Grupos grupo = new Grupos(Integer.parseInt(idGrupo),"",0);
+                        Grupos grupo = new Grupos(idGrupo,"",0);
                         gh.open();
                         gh.eliminaGrupo(grupo);
                         gh.close();

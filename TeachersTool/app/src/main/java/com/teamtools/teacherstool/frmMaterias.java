@@ -1,18 +1,22 @@
 package com.teamtools.teacherstool;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.teamtools.teacherstool.helpers.MateriasHelper;
 import com.teamtools.teacherstool.models.Materias;
+import com.teamtools.teacherstool.models.Shared;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class frmMaterias extends AppCompatActivity {
 
@@ -26,7 +30,7 @@ public class frmMaterias extends AppCompatActivity {
 
         this.initComponents();
 
-        if(Integer.parseInt(idMateria) != 0)
+        if(idMateria != 0)
         {
             this.obtenerMateria();
         }
@@ -34,7 +38,7 @@ public class frmMaterias extends AppCompatActivity {
 
     private void initComponents() {
         this.txtNombre = (EditText)findViewById(R.id.txtNombre);
-        this.idMateria = getIntent().getExtras().getString("clave_materia");
+        this.idMateria = Shared.IdShared;
     }
 
     public void onClickGuardar(View view){
@@ -42,7 +46,7 @@ public class frmMaterias extends AppCompatActivity {
         String nombre = txtNombre.getText().toString();
 
         if(nombre.isEmpty()){
-            txtNombre.setError("Debes ingresar un nombre.");
+            txtNombre.setError("Debes ingresar el nombre.");
             return;
         }
 
@@ -51,8 +55,8 @@ public class frmMaterias extends AppCompatActivity {
         boolean guardado = false;
         try {
             mh.open();
-            if(Integer.parseInt(idMateria) != 0) {
-                materia = new Materias(Integer.parseInt(idMateria), nombre);
+            if(idMateria != 0) {
+                materia = new Materias(idMateria, nombre);
                 guardado = mh.actualizaMateria(materia);
             }
             else {
@@ -64,6 +68,8 @@ public class frmMaterias extends AppCompatActivity {
             {
                 Toast.makeText(getBaseContext(),"Tu materia ha sido guardada.", Toast.LENGTH_SHORT).show();
                 this.txtNombre.setText("");
+                Intent intent = new Intent(this, catMaterias.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         }
         catch(Exception error){
@@ -74,9 +80,9 @@ public class frmMaterias extends AppCompatActivity {
 
     private void obtenerMateria()
     {
-        Materias materia = new Materias(Integer.parseInt(idMateria),"");
+        Materias materia = new Materias(idMateria,"");
         MateriasHelper mh = new MateriasHelper(this);
-        ArrayList<Materias> lstMaterias = new ArrayList<>();
+        List<Materias> lstMaterias = new ArrayList<>();
         mh.open();
         lstMaterias = mh.obtenerMateria(materia);
         mh.close();
@@ -88,5 +94,5 @@ public class frmMaterias extends AppCompatActivity {
     }
 
     private EditText txtNombre;
-    private String idMateria;
+    private Integer idMateria;
 }

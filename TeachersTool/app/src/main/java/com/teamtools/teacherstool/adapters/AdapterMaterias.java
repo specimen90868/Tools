@@ -11,19 +11,20 @@ import com.teamtools.teacherstool.R;
 import com.teamtools.teacherstool.models.Materias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pp on 19/10/2016.
  */
 
 public class AdapterMaterias extends ArrayAdapter<Materias> {
-    public AdapterMaterias(Context context, ArrayList<Materias> objects) {
+    public AdapterMaterias(Context context, List<Materias> objects) {
         super(context, 0, objects);
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        return super.getDropDownView(position, convertView, parent);
+        return getView(position, convertView, parent);
     }
 
     @Override

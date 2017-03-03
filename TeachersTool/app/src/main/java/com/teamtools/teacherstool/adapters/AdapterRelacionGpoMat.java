@@ -39,16 +39,16 @@ public class AdapterRelacionGpoMat extends ArrayAdapter<RelacionGrupoMaterias> {
         }
 
         TextView IdRGM = (TextView)v.findViewById(R.id.IdRGM);
-        TextView IdcGrupo = (TextView)v.findViewById(R.id.IdcGrupo);
-        TextView IdcMat = (TextView)v.findViewById(R.id.IdcMat);
-        TextView cGrInicial = (TextView)v.findViewById(R.id.cGrInicial);
-        TextView cMatNombre = (TextView)v.findViewById(R.id.cNombreMateria);
+        TextView IdcGrupo = (TextView)v.findViewById(R.id.IdcGrupoRGM);
+        TextView IdcMat = (TextView)v.findViewById(R.id.IdcMatRGM);
+        TextView cGrInicial = (TextView)v.findViewById(R.id.cGrMInicial);
+        TextView cMatNombre = (TextView)v.findViewById(R.id.cMaNombreRGM);
 
         RelacionGrupoMaterias item = getItem(position);
         IdRGM.setText(Integer.toString(item.getIdRGM()));
         String inicial = item.getcMaNombre().substring(0,1);
         cGrInicial.setText(inicial.toUpperCase());
-        IdcGrupo.setText(item.getIdcGrupo());
+        IdcGrupo.setText(Integer.toString(item.getIdcGrupo()));
         IdcMat.setText(Integer.toString(item.getIdcMat()));
         cMatNombre.setText(item.getcMaNombre());
         return v;

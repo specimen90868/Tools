@@ -106,7 +106,6 @@ public class RelacionGrupoMateriaHelper {
 
     public ArrayList<RelacionGrupoMaterias> obtenerGrupoMaterias(RelacionGrupoMaterias rgm)
     {
-        SQLiteDatabase db = null;
         String commandText = "select gm.IdRGM, gm.IdcGrupo, gm.IdcMat, m.cMaNombre " +
                 "from rGrupoMateria gm inner join cGrupos g on gm.IdcGrupo = g.IdcGrupo inner join cMaterias m on gm.IdcMat = m.IdcMat where gm.IdcGrupo = " + rgm.getIdcGrupo();
         Cursor cursor = null;
@@ -124,5 +123,15 @@ public class RelacionGrupoMateriaHelper {
             lstRGM = null;
             return lstRGM;
         }
+    }
+
+    public Integer existeAsignacion(RelacionGrupoMaterias rgm)
+    {
+        String commandText = "select count(*) from rGrupoMateria where IdcGrupo = " + rgm.getIdcGrupo() + " and IdcMat = " + rgm.getIdcMat();
+        Cursor cursor = null;
+        cursor = mDb.rawQuery(commandText, null);
+        cursor.moveToFirst();
+        Integer count = cursor.getInt(0);
+        return  count;
     }
 }

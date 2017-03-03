@@ -11,6 +11,7 @@ import android.util.Log;
 import com.teamtools.teacherstool.models.Materias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pp on 19/10/2016.
@@ -83,6 +84,7 @@ public class MateriasHelper {protected static final String TAG = "DataAdapter";
         }
         return exec;
     }
+
     public boolean eliminaMateria(Materias materias){
         boolean exec = false;
         String commandText = "delete from cMaterias Where IdcMat = ?";
@@ -99,6 +101,7 @@ public class MateriasHelper {protected static final String TAG = "DataAdapter";
         }
         return exec;
     }
+
     public ArrayList<Materias> obtenerMaterias()
     {
         SQLiteDatabase db = null;
@@ -110,9 +113,9 @@ public class MateriasHelper {protected static final String TAG = "DataAdapter";
 
             while(cursor.moveToNext())
             {
-                lstMaterias.add(new Materias(cursor.getInt(0),
-                        cursor.getString(1)));
+                lstMaterias.add(new Materias(cursor.getInt(0), cursor.getString(1)));
             }
+            cursor.close();
             return lstMaterias;
         }
         catch(SQLiteException err) {
@@ -121,10 +124,10 @@ public class MateriasHelper {protected static final String TAG = "DataAdapter";
         }
     }
 
-    public ArrayList<Materias> obtenerMateria(Materias materias)
+    public List<Materias> obtenerMateria(Materias materia)
     {
         SQLiteDatabase db = null;
-        String commandText = "select * from cMaterias where IdcMat = " + materias.getIdcMat();
+        String commandText = "select * from cMaterias where IdcMat = " + materia.getIdcMat();
         Cursor cursor = null;
         ArrayList<Materias> lstMaterias = new ArrayList<>();
         try {

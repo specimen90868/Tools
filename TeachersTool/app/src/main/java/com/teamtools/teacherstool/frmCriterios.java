@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.teamtools.teacherstool.helpers.CriteriosHelper;
 import com.teamtools.teacherstool.models.Criterios;
+import com.teamtools.teacherstool.models.Shared;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class frmCriterios extends AppCompatActivity {
 
         this.initComponents();
 
-        if (Integer.parseInt(idCriterio)!=0){
+        if (idCriterio != 0){
             this.obtenerCriterio();
         }
 
@@ -35,7 +36,7 @@ public class frmCriterios extends AppCompatActivity {
 
     private void initComponents(){
         this.txtNombreCriterio = (EditText)findViewById(R.id.txtNombreCriterio);
-        this.idCriterio = getIntent().getExtras().getString("clave_criterio");
+        this.idCriterio = Shared.IdShared;
     }
 
     public void onClickGuardar(View view){
@@ -52,8 +53,8 @@ public class frmCriterios extends AppCompatActivity {
         boolean guardado = false;
         try {
             gh.open();
-            if(Integer.parseInt(idCriterio) != 0) {
-                criterio = new Criterios(Integer.parseInt(idCriterio), nomcriterio);
+            if(idCriterio != 0) {
+                criterio = new Criterios(idCriterio, nomcriterio);
                 guardado = gh.actualizaCriterio(criterio);
             }
             else {
@@ -76,7 +77,7 @@ public class frmCriterios extends AppCompatActivity {
 
     private void obtenerCriterio()
     {
-        Criterios criterio = new Criterios(Integer.parseInt(idCriterio),"");
+        Criterios criterio = new Criterios(idCriterio,"");
         CriteriosHelper gh = new CriteriosHelper(this);
         ArrayList<Criterios> lstCriterios = new ArrayList<>();
         gh.open();
@@ -89,7 +90,7 @@ public class frmCriterios extends AppCompatActivity {
         }
     }
 
-    private String idCriterio;
+    private Integer idCriterio;
     private EditText txtNombreCriterio;
 
 }

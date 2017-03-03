@@ -29,13 +29,14 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:layout_width="200dp"
+        android:layout_width="190dp"
         android:layout_height="30dp"
         android:text="@string/cCriNombre"
         android:id="@+id/cCriNombre"
         android:textSize="@dimen/titlecatalogos"
         android:textColor="@color/colorPrimaryText"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15sp"/>
 
 </RelativeLayout>

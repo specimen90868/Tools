@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.teamtools.teacherstool.helpers.GruposHelper;
 import com.teamtools.teacherstool.models.Grupos;
+import com.teamtools.teacherstool.models.Shared;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class frmGrupos extends AppCompatActivity {
 
         this.initComponents();
 
-        if(Integer.parseInt(idGrupo) != 0)
+        if(idGrupo != 0)
         {
             this.obtenerGrupo();
         }
@@ -34,7 +35,7 @@ public class frmGrupos extends AppCompatActivity {
     private void initComponents() {
         this.txtNombre = (EditText)findViewById(R.id.txtNombre);
         this.txtPeriodos = (EditText)findViewById(R.id.txtPeriodos);
-        this.idGrupo = getIntent().getExtras().getString("clave_grupo");
+        this.idGrupo = Shared.IdShared;
     }
 
     public void onClickGuardar(View view){
@@ -59,8 +60,8 @@ public class frmGrupos extends AppCompatActivity {
         boolean guardado = false;
         try {
             gh.open();
-            if(Integer.parseInt(idGrupo) != 0) {
-                grupo = new Grupos(Integer.parseInt(idGrupo), nombre, nPeriodos);
+            if(idGrupo != 0) {
+                grupo = new Grupos(idGrupo, nombre, nPeriodos);
                 guardado = gh.actualizaGrupo(grupo);
             }
             else {
@@ -86,7 +87,7 @@ public class frmGrupos extends AppCompatActivity {
 
     private void obtenerGrupo()
     {
-        Grupos grupo = new Grupos(Integer.parseInt(idGrupo),"",0);
+        Grupos grupo = new Grupos(idGrupo,"",0);
         GruposHelper gh = new GruposHelper(this);
         ArrayList<Grupos> lstGrupos = new ArrayList<>();
         gh.open();
@@ -102,5 +103,5 @@ public class frmGrupos extends AppCompatActivity {
 
     private EditText txtNombre;
     private EditText txtPeriodos;
-    private String idGrupo;
+    private Integer idGrupo;
 }

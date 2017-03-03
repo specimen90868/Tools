@@ -1,39 +1,31 @@
 package com.teamtools.teacherstool;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.Menu;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.PopupMenu.OnMenuItemClickListener;
 
 import com.teamtools.teacherstool.adapters.AdapterCriterios;
 import com.teamtools.teacherstool.helpers.CriteriosHelper;
 import com.teamtools.teacherstool.models.Criterios;
-
-import org.w3c.dom.Text;
+import com.teamtools.teacherstool.models.Shared;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class catCriterios extends AppCompatActivity {
-
-    private PopupMenu popupMenu;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +36,7 @@ public class catCriterios extends AppCompatActivity {
 
     private void initComponents(){
         this.lstvCriterios=(ListView)findViewById(R.id.lstvCriterios);
-
+        this.registerForContextMenu(this.lstvCriterios);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarCriterios);
         setSupportActionBar(toolbar);
 
@@ -53,13 +45,16 @@ public class catCriterios extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent=new Intent(getBaseContext(),frmCriterios.class );
-                intent.putExtra("clave_criterio","0");
+                Shared.IdShared = 0;
                 startActivity(intent);
             }
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        ListaCriterios();
+    }
+    void ListaCriterios(){
         CriteriosHelper ch=new CriteriosHelper(this);
         ch.open();
         ArrayList<Criterios> lstCriterios = new ArrayList<>();
@@ -73,106 +68,64 @@ public class catCriterios extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView c = (TextView) view.findViewById(R.id.IdcCriterio);
                 String idCriterio = c.getText().toString();
-
                 Intent _intent = new Intent(getBaseContext(), frmCriterios.class);
-                _intent.putExtra("clave_criterio", idCriterio);
+                Shared.IdShared = Integer.parseInt(idCriterio);
                 startActivity(_intent);
             }
         });
-
-        lstvCriterios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                PopupMenu popup = new PopupMenu(catCriterios.this, view);
-                popup.getMenuInflater().inflate(R.menu.menu_context_criterios, popup.getMenu());
-                TextView c = (TextView) view.findViewById(R.id.IdcCriterio);
-                final String idCriterio = c.getText().toString();
-
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    //MENU FILA
-
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.menu_item_delete_criterio:
-                                AlertDialog.Builder builder=new AlertDialog.Builder(catCriterios.this);
-                                builder.setMessage("¿Desea borrar el criterio?");
-                                builder.setTitle("Confirmación.");
-                                builder.setPositiveButton("Si",new DialogInterface.OnClickListener(){
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        boolean eliminado=false;
-                                        try {
-
-                                            CriteriosHelper gh = new CriteriosHelper(catCriterios.this);
-                                            gh.open();
-                                            Criterios criterio = new Criterios(Integer.parseInt(idCriterio),"");
-                                            eliminado = gh.eliminarCriterio(criterio);
-
-                                            gh.close();
-                                            if(eliminado)
-                                            {
-                                                Toast.makeText(getBaseContext(),"El criterio ha sido borrado.", Toast.LENGTH_SHORT).show();
-                                                Intent intcriterios = new Intent(catCriterios.this,catCriterios.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                startActivity(intcriterios);
-                                            }
-                                        }
-                                        catch(Exception error){
-                                            Toast.makeText(getBaseContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                                        }
-
-                                    }
-                                });
-
-                                builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
-                                    }
-                                });
-
-                                AlertDialog dialog= builder.create();
-                                dialog.show();
-                                //Toast.makeText(catCriterios.this, "Eliminar Criterio: "+idCriterio, Toast.LENGTH_LONG).show();
-
-                                break;
-                            case R.id.menu_item_editar_criterio:
-                                Intent _intent = new Intent(getBaseContext(), frmCriterios.class);
-                                _intent.putExtra("clave_criterio", idCriterio);
-                                startActivity(_intent);
-                                break;
-                        }
-                        return true;
-                    }
-                    //FIN MENU FILA
-                });
-                popup.show();
-                return true;
-            }
-        });
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_context_criterios, menu);
-        return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflate  = this.getMenuInflater();
+        inflate.inflate(R.menu.menu_context_criterios, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo menuCriterio = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        ListAdapter criterio = lstvCriterios.getAdapter();
+        Criterios c = (Criterios)criterio.getItem(menuCriterio.position);
+        final Integer idCriterio = c.getIdcCri();
+        final Context context = this;
         switch (item.getItemId()) {
-            case R.id.menu_item_delete_criterio:
-                Toast.makeText(catCriterios.this, "soy eliminar del menu oculto", Toast.LENGTH_LONG).show();
+            case R.id.cEditar:
+                Intent _intent = new Intent(getBaseContext(), frmCriterios.class);
+                Shared.IdShared = idCriterio;
+                startActivity(_intent);
                 break;
-            case R.id.toolbarCriterios:
-                onBackPressed();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
+            case R.id.cBorrar:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("¿Deseas borrar el criterio?");
+                builder.setTitle("Confirmación");
+                builder.setPositiveButton("Si", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        CriteriosHelper ch = new CriteriosHelper(context);
+                        Criterios criterio = new Criterios(idCriterio,"");
+                        ch.open();
+                        ch.eliminarCriterio(criterio);
+                        ch.close();
+                        ListaCriterios();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                break;
+
+            default:
+                return super.onContextItemSelected(item);
+        }
+        return  true;
+    }
 
     private ListView lstvCriterios;
 }
