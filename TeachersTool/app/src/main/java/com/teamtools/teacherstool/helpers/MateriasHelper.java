@@ -124,7 +124,7 @@ public class MateriasHelper {protected static final String TAG = "DataAdapter";
         }
     }
 
-    public List<Materias> obtenerMateria(Materias materia)
+    public ArrayList<Materias> obtenerMateria(Materias materia)
     {
         SQLiteDatabase db = null;
         String commandText = "select * from cMaterias where IdcMat = " + materia.getIdcMat();

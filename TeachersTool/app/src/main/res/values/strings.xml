@@ -33,10 +33,17 @@
     <string name="subtituloFrmCriterioNvoNombre">Criterio:</string>
     <string name="tituloBtnCriterioGruada">Guardar</string>
 
+    <string name="cMatNombre">Materia</string>
+    <string name="tituloFrmMateriaNvo">Nueva Materia</string>
     <string name="title_activity_cat_materias">Materias</string>
     <string name="title_activity_frm_materias">Formulario</string>
     <string name="tituloFormularioMaterias">Nueva materia</string>
 
+    <string name="IdcAlumno">0</string>
+    <string name="cAlNombre">Alumno</string>
+    <string name="title_activity_cat_alumnos">AlumnosTe</string>
+    <string name="title_activity_frm_alumnos">Formulario</string>
+    <string name="tituloFrmAlumnoNvo">Nuevo Alumno</string>
 
     <string name="IdRGM">0</string>
     <string name="cGMNombre">Materia</string>
@@ -47,6 +54,5 @@
     <string name="SpinnerNombre">Nombre</string>
     <string name="tituloFormularioRGM">Asignar materia:</string>
     <string name="tituloBotonRGM">Asignar</string>
-
 
 </resources>

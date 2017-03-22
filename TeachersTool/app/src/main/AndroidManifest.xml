@@ -73,22 +73,22 @@
                 android:value="com.teamtools.teacherstool.catMaterias" />
         </activity>
         <activity
-            android:name=".catGrupoMaterias"
-            android:label="@string/title_activity_cat_grupo_materias"
+            android:name=".catAlumnos"
+            android:label="@string/title_activity_cat_alumnos"
             android:parentActivityName=".catGrupos"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.teamtools.teacherstool.catGrupos" />
+                android:value="com.teamtools.teacherstool.MainActivity" />
         </activity>
         <activity
-            android:name=".frmGrupoMaterias"
-            android:label="@string/title_activity_frm_grupo_materias"
-            android:parentActivityName=".catGrupoMaterias"
+            android:name=".frmAlumnos"
+            android:label="@string/title_activity_frm_alumnos"
+            android:parentActivityName=".catAlumnos"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.teamtools.teacherstool.catGrupoMaterias" />
+                android:value="com.teamtools.teacherstool.catAlumnos" />
         </activity>
     </application>
 

@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.teamtools.teacherstool.R;
+import com.teamtools.teacherstool.helpers.AlumnosHelper;
+import com.teamtools.teacherstool.models.Alumnos;
 import com.teamtools.teacherstool.models.Grupos;
 
 import java.util.ArrayList;
@@ -50,7 +52,9 @@ public class AdapterGrupos extends ArrayAdapter<Grupos> {
         cGrInicial.setText(inicial.toUpperCase());
         cGrNombre.setText(item.getcGrNombre());
         cGrPeriodos.setText("Periodos: " + Integer.toString(item.getcGrPeriodos()));
-        cGrTexto.setText("Alumnos: 0");
+        cGrTexto.setText("Alumnos: " );
         return v;
     }
+
+
 }

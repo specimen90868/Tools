@@ -5,4 +5,5 @@ package com.teamtools.teacherstool.models;
  */
 public class Shared {
     public static int IdShared = 0;
+    public static String cadena = "";
 }
