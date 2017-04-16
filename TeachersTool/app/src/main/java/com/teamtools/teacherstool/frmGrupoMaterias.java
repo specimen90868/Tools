@@ -43,12 +43,12 @@ public class frmGrupoMaterias extends AppCompatActivity {
         mh.open();
         ArrayList<Materias> materias = mh.obtenerMaterias();
         mh.close();
-        List<Materias> prueba = new ArrayList<>();
+        /*List<Materias> prueba = new ArrayList<>();
         for (int i = 0; i < materias.size(); i++)
         {
             prueba.add(new Materias(materias.get(i).getIdcMat(),materias.get(i).getcMaNombre()));
-        }
-        ArrayAdapter materiasAdapter = new AdapterMaterias(getApplicationContext(), prueba);
+        }*/
+        ArrayAdapter materiasAdapter = new AdapterMaterias(getApplicationContext(), materias);
         spnMaterias.setAdapter(materiasAdapter);
 
         this.spnMaterias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

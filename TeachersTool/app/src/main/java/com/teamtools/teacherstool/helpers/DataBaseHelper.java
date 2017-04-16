@@ -29,6 +29,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         this.myContext = context;
     }
 
+
     public void createDataBase() throws IOException
     {
         //If the database does not exist, copy it from the assets.

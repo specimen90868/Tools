@@ -83,10 +83,9 @@ public class catGrupos extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView c = (TextView) view.findViewById(R.id.IdcGrupo);
-                Shared.IdShared = Integer.parseInt(c.getText().toString());
-                TextView cn = (TextView) view.findViewById(R.id.cGrNombre);
-                Shared.cadena =cn.getText().toString();
-                Intent _intent = new Intent(getBaseContext(), frmGrupos.class);
+                String idGrupo = c.getText().toString();
+                Shared.IdShared = Integer.parseInt(idGrupo);
+                Intent _intent = new Intent(getBaseContext(), catGrupoMaterias.class);
                 startActivity(_intent);
             }
         });

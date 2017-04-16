@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,56 +19,56 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.teamtools.teacherstool.adapters.AdapterRelacionGpoMat;
-import com.teamtools.teacherstool.helpers.GruposHelper;
-import com.teamtools.teacherstool.helpers.RelacionGrupoMateriaHelper;
-import com.teamtools.teacherstool.models.Grupos;
-import com.teamtools.teacherstool.models.RelacionGrupoMaterias;
+import com.teamtools.teacherstool.adapters.AdapterRGMC;
+import com.teamtools.teacherstool.helpers.CriteriosHelper;
+import com.teamtools.teacherstool.helpers.RGrupoMateriaCriterioHelper;
+import com.teamtools.teacherstool.models.Criterios;
+import com.teamtools.teacherstool.models.RelacionGrupoMateriaCriterio;
 import com.teamtools.teacherstool.models.Shared;
 
 import java.util.ArrayList;
 
-
-public class catGrupoMaterias extends AppCompatActivity {
+public class GrupoMatCriterio extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cat_grupo_materias);
+        setContentView(R.layout.activity_grupo_mat_criterio);
         this.initComponents();
     }
 
-    private void initComponents() {
+    private void initComponents(){
+        this.idRGruMat=Shared.IdShared;
+        this.lstvrGruMatCri = (ListView)findViewById(R.id.lstvGrMatCri);
+        this.registerForContextMenu(this.lstvrGruMatCri);
 
-        this.idGrupo = Shared.IdShared;
-        this.lstvRelacionGM = (ListView)findViewById(R.id.lstvGrupoMaterias);
-        this.registerForContextMenu(this.lstvRelacionGM);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.nuevoRelacionGM);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.nuevoRGMCrit);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), frmGrupoMaterias.class);
+                Intent intent = new Intent(getBaseContext(), frmGrupMatCrit.class);
                 startActivity(intent);
             }
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ListaRelacionGM();
+        ListaRelacionGMC();
+
     }
 
-    void ListaRelacionGM()
+    void ListaRelacionGMC()
     {
-        RelacionGrupoMateriaHelper rgmh = new RelacionGrupoMateriaHelper(this);
-        RelacionGrupoMaterias rgm = new RelacionGrupoMaterias(0,idGrupo,0,"");
-        rgmh.open();
-        ArrayList<RelacionGrupoMaterias> lstRGM = new ArrayList<>();
-        lstRGM = rgmh.obtenerGrupoMaterias(rgm);
-        rgmh.close();
-        ArrayAdapter aRGM = new AdapterRelacionGpoMat(getApplicationContext(), lstRGM);
-        this.lstvRelacionGM.setAdapter(aRGM);
+        RGrupoMateriaCriterioHelper rgmch = new RGrupoMateriaCriterioHelper(this);
+        RelacionGrupoMateriaCriterio rgcm = new RelacionGrupoMateriaCriterio(idRGruMat,0,"",0);
+        rgmch.open();
+        ArrayList<RelacionGrupoMateriaCriterio> lstRGMC = new ArrayList<>();
+        lstRGMC = rgmch.obtenerGrupoMateriasCriterios(rgcm);
+        rgmch.close();
+        ArrayAdapter aRGMC = new AdapterRGMC(getApplicationContext(), lstRGMC);
+        this.lstvrGruMatCri.setAdapter(aRGMC);
     }
 
     @Override
@@ -80,8 +81,8 @@ public class catGrupoMaterias extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo menuGrupoMateria = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
-        ListAdapter gpomat = lstvRelacionGM.getAdapter();
-        RelacionGrupoMaterias rgm = (RelacionGrupoMaterias)gpomat.getItem(menuGrupoMateria.position);
+        ListAdapter gpomat = lstvrGruMatCri.getAdapter();
+        RelacionGrupoMateriaCriterio rgm = (RelacionGrupoMateriaCriterio) gpomat.getItem(menuGrupoMateria.position);
         final Integer idGrupoMateria = rgm.getIdRGM();
         Log.v("ID", idGrupoMateria.toString());
         final Context context = this;
@@ -93,12 +94,12 @@ public class catGrupoMaterias extends AppCompatActivity {
                 builder.setPositiveButton("Si", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
-                        RelacionGrupoMateriaHelper rgmh = new RelacionGrupoMateriaHelper(context);
-                        RelacionGrupoMaterias grupomateria = new RelacionGrupoMaterias(idGrupoMateria,0,0,"");
+                        RGrupoMateriaCriterioHelper rgmh = new RGrupoMateriaCriterioHelper(context);
+                        RelacionGrupoMateriaCriterio grupomateria = new RelacionGrupoMateriaCriterio(idGrupoMateria,0,"",0);
                         rgmh.open();
-                        rgmh.eliminaRelacionGM(grupomateria);
+                        rgmh.eliminarRGMC(grupomateria);
                         rgmh.close();
-                        ListaRelacionGM();
+                        ListaRelacionGMC();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -122,8 +123,7 @@ public class catGrupoMaterias extends AppCompatActivity {
         return  true;
     }
 
-    private ListView lstvRelacionGM;
-    private Integer idGrupo;
-    //private Integer idGrupoMateria;
+    private ListView lstvrGruMatCri;
+    private Integer idRGruMat;
 
 }

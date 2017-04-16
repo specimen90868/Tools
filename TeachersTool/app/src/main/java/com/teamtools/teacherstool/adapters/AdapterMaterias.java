@@ -23,7 +23,7 @@ public class AdapterMaterias extends ArrayAdapter<Materias> {
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        return super.getDropDownView(position, convertView, parent);
+        return getView(position, convertView, parent);
     }
 
     @Override

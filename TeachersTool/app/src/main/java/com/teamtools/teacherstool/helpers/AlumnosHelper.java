@@ -124,6 +124,7 @@ public class AlumnosHelper {protected static final String TAG = "DataAdapter";
         Integer count = cursor.getInt(0);
         return  count;
     }
+
     public ArrayList<Alumnos> obtenerAlumnos()
     {
         SQLiteDatabase db = null;

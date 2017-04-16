@@ -55,4 +55,21 @@
     <string name="tituloFormularioRGM">Asignar materia:</string>
     <string name="tituloBotonRGM">Asignar</string>
 
+    <string name="IdrGMC">0</string>
+    <string name="rGMCIdCriterio">0</string>
+    <string name="rGMCNombreCriterio">Nombre Criterio</string>
+    <string name="rGMCPorcentaje">Porcentaje</string>
+    <string name="title_activity_grupo_mat_criterio">Asignar Criterios</string>
+    <string name="title_activity_frm_grup_mat_crit">Asignar Nuevo Criterio</string>
+
+    <string name="IdSpinnerRGMC">0</string>
+    <string name="SpinnerNombreCrit">Criterio</string>
+    <string name="spnPorcentaje">Porcentaje</string>
+    <string name="PorcentajeRGMC">0</string>
+    <string name="tituloFormularioRGMC">Asignar Criterio</string>
+    <string name="tituloBotonRGMC">Asignar</string>
+    <string name="lblPorcentaje">Porcentaje:</string>
+
+
+
 </resources>

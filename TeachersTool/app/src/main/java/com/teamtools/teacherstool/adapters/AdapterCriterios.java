@@ -24,7 +24,7 @@ public class AdapterCriterios extends ArrayAdapter<Criterios>{
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent){
-        return super.getDropDownView(position,convertView,parent);
+        return getView(position,convertView,parent);
     }
 
     @Override
