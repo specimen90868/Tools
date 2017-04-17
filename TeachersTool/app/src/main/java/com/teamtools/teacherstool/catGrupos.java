@@ -144,8 +144,6 @@ public class catGrupos extends AppCompatActivity {
                 Shared.cadena = nombreGrupo;
 
                 Intent _intentAlumnos = new Intent(getBaseContext(), catAlumnos.class);
-               // _intentAlumnos.putExtra("clave_grupo", idGrupo);
-               // _intentAlumnos.putExtra("nombre_grupo", nombreGrupo);
                 startActivity(_intentAlumnos);
                 break;
             default:

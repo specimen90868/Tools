@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/gActividad"
-        android:title="Actividad"
-        android:orderInCategory="1"/>
-
     <item android:id="@+id/gBorrar"
         android:title="Borrar"
-        android:orderInCategory="2" />
+        android:orderInCategory="1" />
 
     <item android:id="@+id/gCompartir"
         android:title="Compartir"
-        android:orderInCategory="3"/>
+        android:orderInCategory="2"/>
 
     <item android:id="@+id/gCopiar"
         android:title="Copiar"
-        android:orderInCategory="4"/>
+        android:orderInCategory="3"/>
 
     <item android:id="@+id/gEditar"
         android:title="Editar"
-        android:orderInCategory="5"/>
+        android:orderInCategory="4"/>
 
     <item android:id="@+id/gEvaluar"
         android:title="Evaluar"
-        android:orderInCategory="6"/>
+        android:orderInCategory="5"/>
 
     <item android:id="@+id/gAlumnos"
         android:title="Alumnos"
-        android:orderInCategory="7"/>
+        android:orderInCategory="6"/>
 
     <item android:id="@+id/gMaterias"
         android:title="Materias"
-        android:orderInCategory="8"/>
+        android:orderInCategory="7"/>
 
 
 </menu>
